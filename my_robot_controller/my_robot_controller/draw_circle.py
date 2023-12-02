@@ -18,7 +18,7 @@ class DrawCircle(Node):
         self.cmd_vel_pub_.publish(msg)
 
 
-def main(args=Node):
+def main(args=None):
     rclpy.init(args=args)
     node = DrawCircle()
     rclpy.spin(node)

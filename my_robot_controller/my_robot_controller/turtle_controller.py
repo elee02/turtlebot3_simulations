@@ -21,8 +21,12 @@ class TurtlebotController(Node):
 
     def pose_callback(self, msg: Pose):
         cmd = Twist()
-        cmd.linear.x = 5.0
-        cmd.angular.z = 0.0
+        if not (1.5 <= msg.x <= 9.5 and 1.5 <= msg.y <= 9.5):
+            cmd.linear.x = 1.0
+            cmd.angular.z = 0.9
+        else:
+            cmd.linear.x = 5.0
+            cmd.angular.z = 0.0
         self.cmd_vel_publisher_.publish(cmd)
 
 def main(args=None):
